@@ -1,0 +1,80 @@
+openapi: "3.0.0"
+info:
+  title: API de Estados
+  description: API para adicionar os Estados e suas respectivas Regiões, População, Area e Capital.
+  version: 0.0.1
+    contact: 
+      nome: Anna Carla
+      email: annasperendio@hotmail.com.br
+      url: https://github.com/AnnaSperendio
+    license:
+      nome: "Licença GPLv3"
+servers:
+ - url: http://localhost:8080/states
+ description: API Estados
+paths:
+  /states:
+    get:
+      sumary: Lista todos os Estados
+      response: 
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao: 
+                    type: string
+      post:
+        sumary: Cria novo Estado
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  descricao:
+                    type: string
+        response:
+          201:
+            description: "Sucesso"
+ /states/{id}:
+  get:
+    sumary: Recupera uma entidade pelo ID
+    parameters:
+    - name: id
+    in: path
+    schema:
+      type: integer
+      required: true
+    responses:
+      200:
+        description:
+          type: string
+    404:
+      description: Especialidade não encontrada
+      content: 
+        application/json:
+          example: "Not Found"
+ /states/{id}:
+    put:
+      sumary: Atualiza Campos da entidade Estado
+      requestBody:
+        content:
+          aplication/json:
+             schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                descricao:
+                  type: string
+      response: 
+        200:
+           description: "Sucesso"
+          
+        
+      
